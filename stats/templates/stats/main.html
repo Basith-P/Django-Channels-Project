@@ -1,5 +1,13 @@
-{% extends 'base.html' %} {% block content %} {% if qs %}
-<ul>
+{% extends 'base.html' %} {% block content %}
+<form method="post">
+  {% csrf_token %}
+  <div class="form-group mb-3">
+    <input type="text" name="name" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-secondary">+ Add</button>
+</form>
+{% if qs %}
+<ul class="mt-5">
   {% for obj in qs %}
   <li><a href="{{obj.get_absolute_url}}">{{ obj.name }}</a></li>
   {% endfor %}

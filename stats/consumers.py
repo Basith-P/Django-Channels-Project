@@ -5,13 +5,9 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class DashboardConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        dashboard_slug = self.scope["url_route"]["kwargs"]["dashboard_slug"]
+        self.dashboard_slug = dashboard_slug
         await self.accept()
-        print("connected")
-
-        # await self.channel_layer.group_add(
-        #     "dashboard",
-        #     self.channel_name
-        # )
 
     async def disconnect(self, close_code):
         # await self.channel_layer.group_discard(

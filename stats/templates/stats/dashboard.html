@@ -1,1 +1,23 @@
-{% extends 'base.html' %} {% block content %} HELLO WORLD {% endblock content %}
+{% extends 'base.html' %} {% load static %} {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'stats/dashboard.js' %}" defer></script>
+{% endblock scripts %} {% block content %}
+<div class="row">
+  <div class="col">
+    <h1 id="dashboard-name" class="text-center">{{name}}</h1>
+    <p>
+      Slug: <b><span id="dashboard-slug">{{slug}}</span></b>
+    </p>
+    <p>
+      User: <b><span id="dashboard-slug">{{user}}</span></b>
+    </p>
+    <hr />
+    <input type="number" id="data-input" class="form-control mb-3" />
+    <button id="submit-btn" class="btn btn-primary">Send</button>
+  </div>
+
+  <div class="col">
+    <canvas id="myChart"></canvas>
+  </div>
+</div>
+{% endblock content %}
