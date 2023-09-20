@@ -1,3 +1,12 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Statistic
+
+
+def main(request):
+    qs = Statistic.objects.all()
+    return render(request, 'stats/main.html', {'qs': qs})
+
+
+def dashboard(request, slug):
+    return render(request, 'stats/dashboard.html', {'slug': slug})
